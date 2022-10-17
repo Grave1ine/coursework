@@ -28,7 +28,7 @@ struct Menu
     GameSize gameSize;
 };
 
-Menu * BuildingMenu(GameSize gameSize);                 //Функция возвращающая указатель типа Menu
+Menu * BuildingMenu(GameSize gameSize);//Функция возвращающая указатель типа Menu
 void PrintMenu(Menu * menu);           //функция запуска меню принимает переменную menu типа указатель
 void DestroyMenu(Menu * menu);         //функция удаления меню принимает переменную menu типа указатель
 

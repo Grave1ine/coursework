@@ -7,7 +7,7 @@ struct GameBoard                         //структура игрового �
 {
     enum BoardKey
     {
-        ESC
+        ESC,
     };
 
     GameSize gameSize;

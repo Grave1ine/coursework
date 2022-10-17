@@ -8,7 +8,8 @@ SOURCES += \
         Game.cpp \
         Menu.cpp \
         Palette.cpp \
-        level.cpp \
+        Pearson.cpp \
+        Screen.cpp \
         main.cpp
 
 LIBS += -L$$PWD/../PDCurses/wincon/ -lpdcurses
@@ -22,5 +23,7 @@ HEADERS += \
     Game.h \
     GameState.h \
     Menu.h \
+    Pearson.h \
+    Screen.h \
     palette.h
 

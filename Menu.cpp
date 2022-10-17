@@ -7,7 +7,7 @@ Menu * BuildingMenu(GameSize gameSize)                  //
     Menu * menu = new Menu;
     menu -> gameSize = gameSize;
     menu -> menuString[Menu::STAET_GAME] = "START";          //обращение через расширенную область видимости к полю перечисления в структуре
-    menu -> menuString[Menu::TABLE_RECORD] = "TABLE RECORDS";
+    menu -> menuString[Menu::TABLE_RECORD] = "TABLE RECORDS";// массив?
     menu -> menuString[Menu::EXIT] = "EXIT";
     menu -> currentPoint = Menu::FirstPoint;                       //местоположение курсора
     return menu;
@@ -15,8 +15,9 @@ Menu * BuildingMenu(GameSize gameSize)                  //
 
 void DestroyMenu(Menu * menu)          //
 {
-
+    delete menu;
 }
+
 void PrintMenu(Menu * menu)            //
 {
     if (!menu)
@@ -69,7 +70,7 @@ GameState RunMenu(Menu * menu, Menu::MenuKey key)
             return BOARD;
             case Menu::TABLE_RECORD:
             return MENU;
-            case Menu::EXIT:
+            case 15:
             return EXIT;
             default :
             break;

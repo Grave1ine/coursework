@@ -1,6 +1,9 @@
 #include "Game.h"
 #include "palette.h"
+#include <stdlib.h>
+//#include "Pearson.h"
 //#include "Menu.h"
+//#include "GameState.h"
 #include <curses.h>
 
 void BuildingGameSubModels(Game * game)
@@ -17,6 +20,7 @@ void BuildingGameSubModels(Game * game)
         break;
         case BOARD:
             PrintBoard(game -> board);
+            PrintPearson(game -> pearson);
         break;
         case EXIT:
         return;
@@ -49,22 +53,23 @@ GameState StartGameSubModels(Game * game)
                     break;
                     default:
                     return game -> state;
-                }
-            return RunMenu(game -> menu, menuKay);
-            case BOARD:
-            GameBoard::BoardKey BoardKey;
-            switch (ch)
+                    }
+                    return RunMenu(game -> menu, menuKay);
+                    case BOARD:
+
+                switch (ch)
                 {
                     case 27:
-                    BoardKey = GameBoard::ESC;
-                    break;
+                    return RunBoard(game -> board, GameBoard::ESC);
+                    case 32: //spase
+                    return RunPearson(game -> pearson, Pearson::SPACE);       //прописывается пробел
+                    case -1:
+                    return RunPearson(game -> pearson, game -> pearson -> direction);
                     default:
                     return game -> state;
                 }
-            return RunBoard(game -> board, BoardKey);
-
             case EXIT:
-            return game -> state;
+            exit(0);
         }
 }
 
@@ -74,13 +79,16 @@ Game * BuildingGame()                      //Функция возвращающ
         keypad(stdscr, TRUE);              //обработка командных клавиш (стрелки)
         curs_set(0);                       //убирает мигающий курсор в консоли
         InitPalette();
+        noecho();
+        //halfdelay(1);                      //если клавиша не нажата, значит нажата предыдущая
+
 
         Game * game = new Game;            //выделение динамической памяти под Game и определение указателя *game, структура динамическая у нее нет имени
-
         game -> state = MENU;              //обращение к перечислению state к полю MENU
-        game -> gameSize = {110, 30};
+        game -> gameSize = {110, 30};      //размер игровой доски
         game -> board = BuildBoard(game -> gameSize);      //присваивает значение BuildBoard в указатель board который лежит в динамической памяти структуры Game
         game -> menu = BuildingMenu(game -> gameSize);     //создается меню
+        game -> pearson = BuildingPearson();
         return game;                       //возвращает адрес структуры Game
     }
 
@@ -90,6 +98,7 @@ void DestroyGame(Game * game)          //функция удаления игр�
         {
             return;
         }
+    DestroyPearson(game -> pearson);
     DestroyMenu(game -> menu);         //удаление меню
     DestroyBoard(game -> board);       //функция DestroyBoard принимает значение
     delete game;                       //удаление игры
