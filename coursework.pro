@@ -12,7 +12,7 @@ SOURCES += \
         Screen.cpp \
         main.cpp
 
-LIBS += -L$$PWD/../PDCurses/wincon/ -lpdcurses
+LIBS += -lncurses
 
 
 INCLUDEPATH += $$PWD/../PDCurses

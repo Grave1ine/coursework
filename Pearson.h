@@ -3,8 +3,9 @@
 
 #include "GameState.h"
 
-struct Pearson
-{
+struct Pearson {
+    Pearson();
+
     struct Point         //размер персонажа?
     {
         int x;
@@ -13,21 +14,24 @@ struct Pearson
 
     enum Direction       //движение
     {
-        //NetralPoint,     //изначальная позиция
-        SPACE
+        UP,     //изначальная позиция
+        DOWN,
+        STAY
     };
 
-    Point body[10];      //персонаж
+    //Point body[10];      //персонаж ????? WTF?
     int PearsonSize;
+    Point position{};
+    char shape;
     Direction direction; //переменная типа
+
+    //Функция возвращающая указатель типа Pearson
+    void PrintPearson() const;           //функция запуска Pearson принимает переменную pearson типа указатель
+
+    GameState RunPearson() const; //direction это перечисление типа Direction
+
+    [[nodiscard]] bool isMove() const;
+
 };
-
-Pearson * BuildingPearson();                    //Функция возвращающая указатель типа Pearson
-void PrintPearson(Pearson * pearson);           //функция запуска Pearson принимает переменную pearson типа указатель
-void DestroyPearson(Pearson * pearson);         //функция удаления   принимает переменную   типа указатель
-
-GameState RunPearson(Pearson * pearson, Pearson::Direction direction); //direction это перечисление типа Direction
-
-bool MovePerson(Pearson * pearson);
 
 #endif // PEARSON_H
