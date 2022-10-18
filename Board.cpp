@@ -3,46 +3,37 @@
 
 #include <curses.h>
 
-GameBoard * BuildBoard(GameSize gameSize)                  //функция возвращающая указатель типа GameBoard
-{
-    GameBoard * board = new GameBoard;      //выделение динамической памяти под GameBoard и определение на нее указателя *board
-    board -> gameSize = gameSize;
-    //board -> height = 110;                //ширина игрового поля
-    //board -> width = 30;                  //высота игрового поля
-    return board;
-}
 
-void DestroyBoard(GameBoard * board)      //функция удаления поля принимает указатель board типа GameBoard
+void GameBoard::PrintBoard() const        //функция вывода поля принимает указатель board типа GameBoard
 {
-    delete board;                         //удаление структуры GameBoard из динамической памяти УТОЧНИТЬ!!!!
-}
 
-void PrintBoard(GameBoard * board)        //функция вывода поля принимает указатель board типа GameBoard
-{
-    if(!board)                            //проверка на nullptr
+
+    attron(COLOR_PAIR(BOARD));
+    for (int i = 0; i < height; ++i)     //указатель на выстоу игр. поля
     {
-        return;
-    }
-
-    attron(COLOR_PAIR(Board_pol));
-    for (int i = 0; i < board -> gameSize.height; ++ i)     //указатель на выстоу игр. поля
-    {
-        for (int j = 0; j < board -> gameSize.width; ++ j)  //указатель на ширину игр. поля
+        for (int j = 0; j < width; ++j)  //указатель на ширину игр. поля
         {
             move(i, j);                                     //заполнение поля?
             addch(' ');                                     //заполнение поля (функционал из библиотеки)
         }
     }
-    attroff(COLOR_PAIR(Board_pol));
+    attroff(COLOR_PAIR(BOARD));
 }
 
-GameState RunBoard(GameBoard * gameBoard, GameBoard::BoardKey key)
-{
-    (void) gameBoard;
-    switch (key)
-    {
-        case GameBoard::ESC:          //выхрд из игры
-        return MENU;
-    }
-    return BOARD;
+
+GameBoard::GameBoard() {
+
+    height = BOARD_HEIGHT;
+    width = BOARD_WIDTH;
 }
+
+GS::GameState GameBoard::RunBoard(GameBoard::BoardKey key) {
+
+    switch (key) {
+        case GameBoard::ESC:          //выхрд из игры
+            return GS::MENU;
+    }
+    return GS::BOARD;
+}
+
+

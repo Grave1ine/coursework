@@ -1,17 +1,14 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-enum GameState                 //перечисление сосостояния
-{
-    MENU,
-    BOARD,
-    EXIT
-};
+namespace GS {
 
-struct GameSize
-{
-    int width;
-    int height;
-};
+    enum GameState                 //перечисление сосостояния
+    {
+        MENU,
+        BOARD,
+        EXIT
+    };
+}
 
 #endif // GAMESTATE_H

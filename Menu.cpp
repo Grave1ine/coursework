@@ -2,7 +2,7 @@
 #include "palette.h"
 #include <curses.h>
 
-Menu * BuildingMenu(GameSize gameSize)                  //
+Menu * BuildingMenu()                  //
 {
     Menu * menu = new Menu;
     menu -> gameSize = gameSize;
@@ -25,7 +25,7 @@ void PrintMenu(Menu * menu)            //
             return;
         }
 
-    attron(COLOR_PAIR(Menu_palett));                      //включение атрибутов?
+    attron(COLOR_PAIR(MENU));                      //включение атрибутов?
 
     for (int i = 0; i < menu ->gameSize.height; ++ i)     //указатель на выстоу игр. поля
     {
@@ -42,8 +42,8 @@ void PrintMenu(Menu * menu)            //
     }
     move(menu -> currentPoint, 54);                            //выравнивание по ширине
     addch('>');
+    attroff(COLOR_PAIR(MENU));                          //отключение атрибутов?
 
-    attroff(COLOR_PAIR(Menu_palett));                          //отключение атрибутов?
 }
 
 GameState RunMenu(Menu * menu, Menu::MenuKey key)

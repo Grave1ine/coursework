@@ -3,20 +3,25 @@
 
 #include "GameState.h"
 
+constexpr int BOARD_WIDTH = 110;
+constexpr int BOARD_HEIGHT = 30;
+
 struct GameBoard                         //структура игрового пространства
 {
-    enum BoardKey
-    {
+    enum BoardKey {
         ESC,
     };
+        int width;
+        int height;
 
-    GameSize gameSize;
+
+   GameBoard();       //функция возвращающая указатель типа GameBoard
+
+    void PrintBoard() const;      //функция вывода поля принимает указатель board типа GameBoard
+
+    static GS::GameState RunBoard(GameBoard::BoardKey key);      //функция запуска игры принимает переменную game типа указатель
+
 };
 
-GameBoard * BuildBoard(GameSize gameSize);        //функция возвращающая указатель типа GameBoard
-void DestroyBoard(GameBoard * board);    //функция удаления поля принимает указатель board типа GameBoard
-void PrintBoard(GameBoard * board);      //функция вывода поля принимает указатель board типа GameBoard
-
-GameState RunBoard(GameBoard * board, GameBoard::BoardKey key);
 
 #endif // BOARD_H
