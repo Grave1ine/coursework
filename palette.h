@@ -3,10 +3,10 @@
 
 enum Palette                    //перечисление
 {
-    Board_pol,
-    Menu_palett,
-    Pearson_palett,
-    Screen_palett,               //заставка
+    BOARD,
+    MENU    ,
+    PERSON,
+    SCREEN,               //заставка
     TEXT,
     TERRA
 };
