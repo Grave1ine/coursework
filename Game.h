@@ -8,20 +8,26 @@
 //#include "Pearson.h"
 //#include "Screen.h"
 
+constexpr int BOARD_WIDTH = 110;
+
+constexpr int BOARD_HEIGHT = 30;
+
 struct Game                            //
 {
+    Game(int, int);
+
     Game();
+
     ~Game();
 
-    void runGame();             //функция запуска игры принимает переменную game типа указатель
 
-    void getInput();
+    void processInput();
 
     void updateState();
 
-    void render();
+    void redraw();
 
-    bool isOver() const;
+    [[nodiscard]] bool isRunning() const;
 
 private:
     GameBoard *_board;

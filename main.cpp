@@ -1,13 +1,23 @@
 #include "Game.h"
 #include "Screen.h"
 
-int main()
-{
-    //screen(GameBoard * board);
-    //screen();
+int main() {
 
-    Game game;          //переменная game типа указатель равна функции BuildingGame (создания игры)
-    game.runGame();
-                           //функция DestroyGame (удаление игры) принимает переменную типа указатель game
+    initscr();
+    refresh();
+
+    Game game;
+
+    while (game.isRunning()) {
+
+        game.processInput();
+
+        game.updateState();
+
+        game.redraw();
+
+    }
+
+
     return 0;
 }

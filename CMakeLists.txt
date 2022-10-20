@@ -26,20 +26,22 @@ set(SOURCE
     Game.cpp
     Menu.cpp
     Palette.cpp
-#    Pearson.cpp
+    #    Pearson.cpp
     Screen.cpp
     Board.cpp
     Point.cpp
+    Drawable.cpp
     )
 
 set(HEADERS
     Game.h
     Menu.h
     Palette.h
-#    Pearson.h
+    #    Pearson.h
     Screen.h
     Board.h
     Point.hpp
+    Drawable.hpp
     )
 add_executable(Sega ${SOURCE} ${HEADERS})
 

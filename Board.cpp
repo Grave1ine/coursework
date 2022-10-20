@@ -4,38 +4,55 @@
 #include <curses.h>
 
 
-void GameBoard::PrintBoard() const        //функция вывода поля принимает указатель board типа GameBoard
+void GameBoard::printBoard() const        //функция вывода поля принимает указатель board типа GameBoard
 {
 }
-
-
-GameBoard::GameBoard() : GameBoard(BOARD_HEIGHT, BOARD_WIDTH) //конструктор
-{
-}
-
 
 GameBoard::GameBoard(int height, int width) {
 
     int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
-    this->width = width;
-    this->height = height;
+
     boardWin = newwin(height, width, yMax / 2 - height / 2, xMax / 2 - width / 2);
-    SetBorder();
-    wrefresh(boardWin);
-    InitBoard();
+
 
 }
 
-void GameBoard::InitBoard() {
+void GameBoard::initBoard() {
 
-//    clear();
-//    refresh();
+    clearBoard();
+    refreshBoard();
+
 }
 
-void GameBoard::SetBorder() {
+void GameBoard::setBorder() {
 
     box(boardWin, 0, 0);
+}
+
+void GameBoard::refreshBoard() {
+
+    wrefresh(boardWin);
+
+}
+
+void GameBoard::mvAdd(int y, int x, chtype symbol) {
+
+    mvwaddch(boardWin, y, x, symbol);
+
+}
+
+void GameBoard::clearBoard() {
+
+    wclear(boardWin);
+    setBorder();
+
+}
+
+chtype GameBoard::getInput() const {
+
+    return wgetch(boardWin);
+
 }
 
 

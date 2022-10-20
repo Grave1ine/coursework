@@ -4,39 +4,52 @@
 #include <curses.h>
 
 
-Game::Game() {
-    initscr();                         //включение графической библиотеки
-    keypad(stdscr, TRUE);              //обработка командных клавиш (стрелки)
-    curs_set(0);                       //убирает мигающий курсор в консоли
-    InitPalette();
-    noecho();
-    refresh();
+Game::Game(int y, int x) {
 
-    _board = new GameBoard();
+    noecho();
+
+    _board = new GameBoard(y, x);
+    _board->initBoard();
     //_pearson = new Pearson(stdscr, Point(0, 0));
     _menu = new Menu();
-
     _isRunning = true;
 
-
-
 }
 
 
-void Game::runGame()              //функция запуска игры принимает переменную game типа указатель
-{
-getch();
-}
+bool Game::isRunning() const {
 
-bool Game::isOver() const {
-
-    return !_isRunning;
+    return _isRunning;
 }
 
 Game::~Game() {
+
     attrset(A_NORMAL);
+    delete _board;
     endwin();
 
 }
+
+void Game::processInput() {
+
+    chtype userInput = _board->getInput();
+
+}
+
+Game::Game() : Game(BOARD_HEIGHT, BOARD_WIDTH) {
+
+}
+
+void Game::redraw() {
+
+    _board->refreshBoard();
+
+
+}
+
+void Game::updateState() {
+
+}
+
 
 
