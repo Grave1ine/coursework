@@ -1,25 +1,33 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include "GameState.h"
+#include <ncurses.h>
 
 constexpr int BOARD_WIDTH = 110;
+
 constexpr int BOARD_HEIGHT = 30;
 
-struct GameBoard                         //структура игрового пространства
+class GameBoard                         //структура игрового пространства
 {
-    enum BoardKey {
-        ESC,
-    };
-        int width;
-        int height;
+public:
 
 
-   GameBoard();       //функция возвращающая указатель типа GameBoard
+    GameBoard();
 
-    void PrintBoard() const;      //функция вывода поля принимает указатель board типа GameBoard
+    GameBoard(int width, int height);
 
-    static GS::GameState RunBoard(GameBoard::BoardKey key);      //функция запуска игры принимает переменную game типа указатель
+    void InitBoard();
+
+    void SetBorder();
+
+    void PrintBoard() const;
+
+private:
+    int width;
+    int height;
+
+
+    WINDOW *boardWin;
 
 };
 

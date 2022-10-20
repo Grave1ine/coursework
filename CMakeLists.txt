@@ -21,22 +21,27 @@ include_directories(.)
 # Create an executable
 ############################################################
 
-add_executable(Sega main.cpp
-               Game.cpp
-               Menu.cpp
-               Palette.cpp
-               Pearson.cpp
-               Screen.cpp
-               Board.cpp
-               Board.h
-               Game.h
-               Control.h
-               GameState.h
-               Menu.h
-               palette.h
-               Pearson.h
-               Screen.h
-               )
+set(SOURCE
+    main.cpp
+    Game.cpp
+    Menu.cpp
+    Palette.cpp
+#    Pearson.cpp
+    Screen.cpp
+    Board.cpp
+    Point.cpp
+    )
+
+set(HEADERS
+    Game.h
+    Menu.h
+    Palette.h
+#    Pearson.h
+    Screen.h
+    Board.h
+    Point.hpp
+    )
+add_executable(Sega ${SOURCE} ${HEADERS})
 
 
 target_link_libraries(Sega

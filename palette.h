@@ -6,7 +6,7 @@ enum Palette                    //перечисление
     BOARD,
     MENU    ,
     PERSON,
-    SCREEN,               //заставка
+    LOGO,               //заставка
     TEXT,
     TERRA
 };

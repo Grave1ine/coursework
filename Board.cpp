@@ -6,34 +6,36 @@
 
 void GameBoard::PrintBoard() const        //функция вывода поля принимает указатель board типа GameBoard
 {
-
-
-    attron(COLOR_PAIR(BOARD));
-    for (int i = 0; i < height; ++i)     //указатель на выстоу игр. поля
-    {
-        for (int j = 0; j < width; ++j)  //указатель на ширину игр. поля
-        {
-            move(i, j);                                     //заполнение поля?
-            addch(' ');                                     //заполнение поля (функционал из библиотеки)
-        }
-    }
-    attroff(COLOR_PAIR(BOARD));
 }
 
 
-GameBoard::GameBoard() {
-
-    height = BOARD_HEIGHT;
-    width = BOARD_WIDTH;
+GameBoard::GameBoard() : GameBoard(BOARD_HEIGHT, BOARD_WIDTH) //конструктор
+{
 }
 
-GS::GameState GameBoard::RunBoard(GameBoard::BoardKey key) {
 
-    switch (key) {
-        case GameBoard::ESC:          //выхрд из игры
-            return GS::MENU;
-    }
-    return GS::BOARD;
+GameBoard::GameBoard(int height, int width) {
+
+    int yMax, xMax;
+    getmaxyx(stdscr, yMax, xMax);
+    this->width = width;
+    this->height = height;
+    boardWin = newwin(height, width, yMax / 2 - height / 2, xMax / 2 - width / 2);
+    SetBorder();
+    wrefresh(boardWin);
+    InitBoard();
+
+}
+
+void GameBoard::InitBoard() {
+
+//    clear();
+//    refresh();
+}
+
+void GameBoard::SetBorder() {
+
+    box(boardWin, 0, 0);
 }
 
 

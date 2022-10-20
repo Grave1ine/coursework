@@ -6,23 +6,23 @@
 
 void Pearson::PrintPearson() const {
 
-    attron(COLOR_PAIR(Pearson_palett));
+    attron(COLOR_PAIR(PERSON));
 
     for (int i = 0; i < PearsonSize; ++i) {
-        mvprintw(position.y, position.x, "%c", shape);
+        mvwprintw(cur_win, position.y, position.x, "%c", shape);
     }
-    attroff(COLOR_PAIR(Pearson_palett));
+    attroff(COLOR_PAIR(PERSON));
 }
 
 
-GameState Pearson::RunPearson() const //direction это перечисление типа Direction
+GS::GameState Pearson::RunPearson() const //direction это перечисление типа Direction
 {
 
     if (!isMove()) {
-        return GameState::EXIT;
+        return GS::GameState::EXIT;
     }
 
-    return GameState::BOARD;
+    return GS::GameState::BOARD;
 }
 
 bool Pearson::isMove() const {
@@ -30,11 +30,33 @@ bool Pearson::isMove() const {
     return direction != STAY;
 }
 
-//Person constructor
-Pearson::Pearson() {
+Pearson::Pearson(WINDOW *window, Point position) {
 
-    position = Point{15, 20};
-    shape = '0';
+    cur_win = window;
     PearsonSize = 1;
-    direction = Pearson::STAY;
+    this->position = position;
+    shape = 'O';
+    direction = STAY;
+    getmaxyx(cur_win, w_size.y, w_size.x);
+
 }
+
+void Pearson::Jump() {
+
+}
+
+void Pearson::mvUP() {
+
+    if (position.y > 0) {
+        position.y--;
+    }
+}
+
+void Pearson::mvDOWN() {
+
+    if (position.y < w_size.y - PearsonSize) {
+        position.y++;
+    }
+
+}
+

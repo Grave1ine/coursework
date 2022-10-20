@@ -2,15 +2,13 @@
 #define PEARSON_H
 
 #include "GameState.h"
+#include "Point.hpp"
+
+#include <ncurses.h>
 
 struct Pearson {
-    Pearson();
+    Pearson(WINDOW *window, Point position);
 
-    struct Point         //размер персонажа?
-    {
-        int x;
-        int y;
-    };
 
     enum Direction       //движение
     {
@@ -20,17 +18,26 @@ struct Pearson {
     };
 
     //Point body[10];      //персонаж ????? WTF?
+    WINDOW *cur_win;
     int PearsonSize;
-    Point position{};
+    Point position;
+    Point w_size;
     char shape;
     Direction direction; //переменная типа
 
     //Функция возвращающая указатель типа Pearson
     void PrintPearson() const;           //функция запуска Pearson принимает переменную pearson типа указатель
 
-    GameState RunPearson() const; //direction это перечисление типа Direction
+    [[nodiscard]] GS::GameState RunPearson() const; //direction это перечисление типа Direction
 
     [[nodiscard]] bool isMove() const;
+
+    void mvUP();
+
+    void mvDOWN();
+
+    void Jump();
+
 
 };
 
