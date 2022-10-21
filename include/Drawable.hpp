@@ -30,5 +30,4 @@ private:
 };
 
 
-
 #endif //COURSEWORK_MAIN_DEV_DRAWABLE_HPP
