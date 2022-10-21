@@ -1,8 +1,9 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <ncurses.h>
+#include "Drawable.hpp"
 
+#include <ncurses.h>
 
 
 class GameBoard                         //структура игрового пространства
@@ -15,7 +16,7 @@ public:
 
     void setBorder();
 
-    void mvAdd(int, int, chtype);
+    void add( Drawable * drawable);
 
     void printBoard() const;
 
