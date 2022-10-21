@@ -50,4 +50,9 @@ chtype GameBoard::getInput() const {
 
 }
 
+void GameBoard::add(Drawable * drawable) {
+
+    drawable -> mvAdd(boardWin);
+}
+
 

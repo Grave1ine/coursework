@@ -6,23 +6,29 @@
 #define COURSEWORK_MAIN_DEV_DRAWABLE_HPP
 
 #include <ncurses.h>
+#include <string>
 
 class Drawable {
 public:
-    Drawable();
 
-    Drawable(int, int, chtype);
 
-    [[nodiscard]] int getX() const;
+    Drawable(int, int);
 
-    [[nodiscard]] int getY() const;
+    [[nodiscard]] int getX() const { return _x; }
+
+
+    [[nodiscard]] int getY() const { return _y; }
+
+    virtual void mvAdd(WINDOW *) = 0;
+
 
 private:
     int _x;
     int _y;
-    chtype _icon;
+
 
 };
+
 
 
 #endif //COURSEWORK_MAIN_DEV_DRAWABLE_HPP
