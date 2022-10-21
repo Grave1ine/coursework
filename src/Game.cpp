@@ -1,7 +1,8 @@
 #include "Bonus.hpp"
 #include "Game.h"
+#include "Drawable.hpp"
 #include "palette.h"
-#include <cstdlib>
+
 #include <curses.h>
 
 
@@ -12,7 +13,6 @@ Game::Game(int y, int x) {
 
     _board = new GameBoard(y, x);
     _board->initBoard();
-    //_pearson = new Pearson(stdscr, Point(0, 0));
     _menu = new Menu();
     _isRunning = true;
 
@@ -50,6 +50,8 @@ void Game::redraw() {
 }
 
 void Game::updateState() {
+
+    _board->add(new Bonus(25, 15));
 
 }
 
