@@ -1,3 +1,4 @@
+#include "Bonus.hpp"
 #include "Game.h"
 #include "palette.h"
 #include <cstdlib>
@@ -7,6 +8,7 @@
 Game::Game(int y, int x) {
 
     noecho();
+    curs_set(0);
 
     _board = new GameBoard(y, x);
     _board->initBoard();

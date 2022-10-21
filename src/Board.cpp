@@ -36,11 +36,6 @@ void GameBoard::refreshBoard() {
 
 }
 
-void GameBoard::mvAdd(int y, int x, chtype symbol) {
-
-    mvwaddch(boardWin, y, x, symbol);
-
-}
 
 void GameBoard::clearBoard() {
 
