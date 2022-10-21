@@ -7,7 +7,7 @@
 
 
 Bonus::Bonus(int y , int x ) : Drawable(y, x) {
-    _s_icon = "Bon!";
+    _s_icon = "Bonus!";
 }
 
 void Bonus::mvAdd(WINDOW * window) {
