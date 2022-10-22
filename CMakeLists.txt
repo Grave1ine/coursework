@@ -32,6 +32,7 @@ add_library(t_rex_lib STATIC
             src/Drawable.cpp
             src/Bonus.cpp
             src/Drawable_Str.cpp
+            src/Drawable_Rect.cpp
             )
 
 target_include_directories(t_rex_lib

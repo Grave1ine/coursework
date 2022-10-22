@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "Bonus.hpp"
 //#include "Control.h"
 #include "Board.h"
 #include "GameState.h"
