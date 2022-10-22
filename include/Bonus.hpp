@@ -5,19 +5,11 @@
 #ifndef COURSEWORK_MAIN_DEV_BONUS_HPP
 #define COURSEWORK_MAIN_DEV_BONUS_HPP
 
-#include "Drawable.hpp"
+#include "Drawable_Str.hpp"
 
-#include <string>
-
-
-class Bonus : public Drawable {
+class Bonus : public DrawableStr {
 public:
     Bonus(int, int);
-
-    void mvAdd(WINDOW *) override;
-
-private:
-    std::string _s_icon;
 };
 
 

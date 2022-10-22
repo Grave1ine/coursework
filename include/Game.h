@@ -33,6 +33,7 @@ private:
     GameBoard *_board;
     //Pearson *_pearson;
     Menu *_menu;
+    Bonus *_bonus;
 
     bool _isRunning;
 

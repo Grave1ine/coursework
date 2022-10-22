@@ -3,13 +3,7 @@
 //
 
 #include "Bonus.hpp"
-#include "Drawable.hpp"
+#include "Drawable_Str.hpp"
 
 
-Bonus::Bonus(int y , int x ) : Drawable(y, x) {
-    _s_icon = "Bonus!";
-}
-
-void Bonus::mvAdd(WINDOW * window) {
-    mvwaddstr(window, getX(), getY(), _s_icon.c_str());
-}
+Bonus::Bonus(int y, int x) : DrawableStr(y, x, "Bonus") {}
