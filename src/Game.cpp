@@ -27,6 +27,8 @@ bool Game::isRunning() const {
 Game::~Game() {
 
     attrset(A_NORMAL);
+    delete _bonus;
+    delete _t_rex_move1;
     delete _board;
     endwin();
 
@@ -51,7 +53,14 @@ void Game::redraw() {
 
 void Game::updateState() {
 
-    _board->add(new Bonus(25, 15));
+    if (_bonus == nullptr) {
+        _bonus = new Bonus(10, 10);
+        _board->add(_bonus);
+
+    }
+    _t_rex_move1 = new T_rex(10, 40);
+    _board->add(_t_rex_move1);
+
 
 }
 

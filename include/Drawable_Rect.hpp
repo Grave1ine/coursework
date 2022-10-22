@@ -14,7 +14,7 @@
 
 class DrawableRect : public Drawable {
 public:
-    DrawableRect(std::tuple<int, int, int, int> &, const std::string);
+    DrawableRect(int, int, const std::string &);
 
     void mvAdd(WINDOW *) override;
 
@@ -24,7 +24,7 @@ private:
     int _width;
     std::vector<std::string> _rect_icon;
 
-    loadTexture(const std::string);
+    std::pair<int, int> _loadTexture(const std::string &);
 };
 
 

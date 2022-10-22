@@ -2,12 +2,10 @@
 #define GAME_H
 
 #include "Bonus.hpp"
-//#include "Control.h"
 #include "Board.h"
 #include "GameState.h"
 #include "Menu.h"
-//#include "Pearson.h"
-//#include "Screen.h"
+#include "T_Rex.hpp"
 
 constexpr int BOARD_WIDTH = 110;
 
@@ -35,6 +33,7 @@ private:
     //Pearson *_pearson;
     Menu *_menu;
     Bonus *_bonus;
+    T_rex *_t_rex_move1;
 
     bool _isRunning;
 
