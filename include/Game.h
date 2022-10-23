@@ -11,8 +11,9 @@ constexpr int BOARD_WIDTH = 110;
 
 constexpr int BOARD_HEIGHT = 30;
 
-struct Game                            //
-{
+class Game {
+
+public:
     Game(int, int);
 
     Game();
@@ -26,11 +27,12 @@ struct Game                            //
 
     void redraw();
 
+    void run();
+
     [[nodiscard]] bool isRunning() const;
 
 private:
     GameBoard *_board;
-    //Pearson *_pearson;
     Menu *_menu;
     Bonus *_bonus;
     T_rex *_t_rex_move1;

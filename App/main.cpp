@@ -6,18 +6,9 @@ int main() {
     initscr();
     refresh();
 
-    Game game;
+    Game trxGame;
 
-    while (game.isRunning()) {
-
-        game.processInput();
-
-        game.updateState();
-
-        game.redraw();
-
-    }
-
+    trxGame.run();
 
     return 0;
 }

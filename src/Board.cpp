@@ -8,13 +8,12 @@ void GameBoard::printBoard() const        //функция вывода поля
 {
 }
 
-GameBoard::GameBoard(int height, int width) {
+GameBoard::GameBoard(int height, int width) : _height(height), _width(width) {
 
     int yMax, xMax;
     getmaxyx(stdscr, yMax, xMax);
 
     boardWin = newwin(height, width, yMax / 2 - height / 2, xMax / 2 - width / 2);
-
 
 }
 
@@ -41,6 +40,7 @@ void GameBoard::clearBoard() {
 
     wclear(boardWin);
     setBorder();
+    drawRoadLine();
 
 }
 
@@ -50,9 +50,14 @@ chtype GameBoard::getInput() const {
 
 }
 
-void GameBoard::add(Drawable * drawable) {
+void GameBoard::add(Drawable *drawable) {
 
-    drawable -> mvAdd(boardWin);
+    drawable->mvAdd(boardWin);
+}
+
+void GameBoard::drawRoadLine() {
+
+    mvwhline(boardWin, _height - 7, 1, ACS_HLINE, _width - 2);
 }
 
 

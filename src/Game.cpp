@@ -64,5 +64,19 @@ void Game::updateState() {
 
 }
 
+void Game::run() {
+
+    while (isRunning()) {
+
+        processInput();
+
+        updateState();
+
+        redraw();
+
+    }
+
+}
+
 
 

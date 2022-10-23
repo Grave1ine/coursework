@@ -16,6 +16,8 @@ public:
 
     void setBorder();
 
+    void drawRoadLine();
+
     void add( Drawable * drawable);
 
     void printBoard() const;
@@ -30,6 +32,8 @@ public:
 private:
 
     WINDOW *boardWin;
+    int _height;
+    int _width;
 
 };
 

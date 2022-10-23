@@ -25,10 +25,8 @@ add_library(t_rex_lib STATIC
             src/Game.cpp
             src/Menu.cpp
             src/Palette.cpp
-            #    Pearson.cpp
             src/Screen.cpp
             src/Board.cpp
-            src/Point.cpp
             src/Drawable.cpp
             src/Bonus.cpp
             src/Drawable_Str.cpp
