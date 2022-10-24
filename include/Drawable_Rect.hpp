@@ -16,15 +16,16 @@ class DrawableRect : public Drawable {
 public:
     DrawableRect(int, int, const std::string &);
 
+
     void mvAdd(WINDOW *) override;
 
 
 private:
-    int _height;
-    int _width;
+    int _height = 1;
+    int _width = 1;
     std::vector<std::string> _rect_icon;
 
-    std::pair<int, int> _loadTexture(const std::string &);
+    void _loadTexture(const std::string &);
 };
 
 

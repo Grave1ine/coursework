@@ -46,6 +46,8 @@ void GameBoard::clearBoard() {
 
 chtype GameBoard::getInput() const {
 
+    beep();
+
     return wgetch(boardWin);
 
 }

@@ -34,8 +34,11 @@ public:
 private:
     GameBoard *_board;
     Menu *_menu;
-    Bonus *_bonus;
-    T_rex *_t_rex_move1;
+    Bonus *_bonus{};
+    T_rex *_t_rex_move1{};
+    T_rex *_t_rex_move2{};
+
+    bool _is_step = false;
 
     bool _isRunning;
 

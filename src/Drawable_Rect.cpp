@@ -9,14 +9,11 @@
 
 DrawableRect::DrawableRect(int y, int x, const std::string &_texture_file) : Drawable(y, x) {
 
-    const auto [h, w] = _loadTexture(_texture_file);
-
-    _height = h;
-    _width = w;
+    _loadTexture(_texture_file);
 
 }
 
-std::pair<int, int> DrawableRect::_loadTexture(const std::string &file_name) {
+void DrawableRect::_loadTexture(const std::string &file_name) {
 
     std::ifstream texture_file(file_name);
     if (!texture_file.is_open()) {
@@ -37,20 +34,20 @@ std::pair<int, int> DrawableRect::_loadTexture(const std::string &file_name) {
         }
     }
 
-    return std::make_pair(_height, _width);
 }
 
 
-void DrawableRect::mvAdd(WINDOW *) {
+void DrawableRect::mvAdd(WINDOW * window) {
 
     auto y = getY();
     auto x = getX();
 
     for (const auto &line: _rect_icon) {
-        mvprintw(y, x, line.c_str());
+        mvwaddstr(window, y, x, line.c_str());
         y++;
     }
 
 }
+
 
 

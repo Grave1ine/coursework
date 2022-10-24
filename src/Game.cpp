@@ -15,6 +15,8 @@ Game::Game(int y, int x) {
     _board->initBoard();
     _menu = new Menu();
     _isRunning = true;
+    _t_rex_move1 = new T_rex(BOARD_HEIGHT - 20, 10);
+    _t_rex_move2 = new T_rex(BOARD_HEIGHT - 20, 10);
 
 }
 
@@ -29,7 +31,9 @@ Game::~Game() {
     attrset(A_NORMAL);
     delete _bonus;
     delete _t_rex_move1;
+    delete _t_rex_move2;
     delete _board;
+
     endwin();
 
 }
@@ -54,12 +58,21 @@ void Game::redraw() {
 void Game::updateState() {
 
     if (_bonus == nullptr) {
-        _bonus = new Bonus(10, 10);
+        _bonus = new Bonus(10, 50);
         _board->add(_bonus);
 
     }
-    _t_rex_move1 = new T_rex(10, 40);
-    _board->add(_t_rex_move1);
+
+
+    if (_is_step) {
+        _board->add(_t_rex_move2);
+
+
+    } else {
+        _board->add(_t_rex_move1);
+
+    }
+    _is_step = !_is_step;
 
 
 }

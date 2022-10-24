@@ -19,7 +19,9 @@ public:
 
     [[nodiscard]] int getY() const { return _y; }
 
-    virtual void mvAdd(WINDOW *) = 0;
+    virtual void mvAdd(WINDOW *) = 0; //Pure virtual function
+
+    virtual void clear(WINDOW *) = 0;
 
 
 private:

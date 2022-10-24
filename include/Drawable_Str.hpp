@@ -16,6 +16,8 @@ public:
 
     void mvAdd(WINDOW *) override;
 
+    void clear(WINDOW *) override;
+
 private:
     std::string _s_icon;
 };
