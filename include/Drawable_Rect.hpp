@@ -19,6 +19,8 @@ public:
 
     void mvAdd(WINDOW *) override;
 
+    void clear(WINDOW *) override;
+
 
 private:
     int _height = 1;

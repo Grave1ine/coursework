@@ -10,6 +10,14 @@
 class T_rex : public DrawableRect {
 public:
     T_rex(int, int);
+
+    void jump();
+
+    void move();
+
+private:
+    int _speed;
+    bool _isJumping;
 };
 
 

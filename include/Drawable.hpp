@@ -25,10 +25,10 @@ public:
 
 
 private:
-    int _x;
+
+protected:
     int _y;
-
-
+    int _x;
 };
 
 

@@ -49,5 +49,17 @@ void DrawableRect::mvAdd(WINDOW * window) {
 
 }
 
+void DrawableRect::clear(WINDOW * window) {
+
+    auto y = getY();
+    auto x = getX();
+
+    for (const auto &line: _rect_icon) {
+        mvwaddstr(window, y, x, std::string(line.size(), ' ').c_str());
+        y++;
+    }
+
+}
+
 
 
