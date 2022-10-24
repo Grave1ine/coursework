@@ -6,6 +6,7 @@
 #include "GameState.h"
 #include "Menu.h"
 #include "T_Rex.hpp"
+#include "T_Rex_Step.hpp"
 
 constexpr int BOARD_WIDTH = 110;
 
@@ -35,8 +36,8 @@ private:
     GameBoard *_board;
     Menu *_menu;
     Bonus *_bonus{};
-    T_rex *_t_rex_move1{};
-    T_rex *_t_rex_move2{};
+    T_rex *_t_rex_move1;
+    T_Rex_step *_t_rex_move2;
 
     bool _is_step = false;
 

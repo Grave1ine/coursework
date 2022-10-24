@@ -14,6 +14,7 @@ GameBoard::GameBoard(int height, int width) : _height(height), _width(width) {
     getmaxyx(stdscr, yMax, xMax);
 
     boardWin = newwin(height, width, yMax / 2 - height / 2, xMax / 2 - width / 2);
+    _ground = height - 4;
 
 }
 
@@ -59,7 +60,20 @@ void GameBoard::add(Drawable *drawable) {
 
 void GameBoard::drawRoadLine() {
 
-    mvwhline(boardWin, _height - 7, 1, ACS_HLINE, _width - 2);
+    mvwhline(boardWin, _ground - 1, 1, ACS_HLINE, _width - 2);
+}
+
+void GameBoard::ClearObject(Drawable *drawable) {
+
+    drawable->clear(boardWin);
+
+
+}
+
+int GameBoard::getGroundY() const {
+
+    return _ground;
+
 }
 
 

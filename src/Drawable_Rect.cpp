@@ -37,10 +37,10 @@ void DrawableRect::_loadTexture(const std::string &file_name) {
 }
 
 
-void DrawableRect::mvAdd(WINDOW * window) {
+void DrawableRect::mvAdd(WINDOW *window) {
 
-    auto y = getY();
-    auto x = getX();
+    auto y = _y;
+    auto x = _x;
 
     for (const auto &line: _rect_icon) {
         mvwaddstr(window, y, x, line.c_str());
@@ -49,10 +49,10 @@ void DrawableRect::mvAdd(WINDOW * window) {
 
 }
 
-void DrawableRect::clear(WINDOW * window) {
+void DrawableRect::clear(WINDOW *window) {
 
-    auto y = getY();
-    auto x = getX();
+    auto y = _y;
+    auto x = _x;
 
     for (const auto &line: _rect_icon) {
         mvwaddstr(window, y, x, std::string(line.size(), ' ').c_str());
@@ -61,5 +61,16 @@ void DrawableRect::clear(WINDOW * window) {
 
 }
 
+int DrawableRect::getHeight() const {
+
+    return _height;
+
+}
+
+int DrawableRect::getWidth() const {
+
+    return _width;
+
+}
 
 

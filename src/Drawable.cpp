@@ -5,4 +5,4 @@
 #include "Drawable.hpp"
 
 //FIXME: TEST
-Drawable::Drawable(int x, int y) : _x(x), _y(y) {}
+Drawable::Drawable(int y, int x) : _y(y), _x(x) {}

@@ -21,6 +21,10 @@ public:
 
     void clear(WINDOW *) override;
 
+    int getHeight() const;
+
+    int getWidth() const;
+
 
 private:
     int _height = 1;

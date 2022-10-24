@@ -2,6 +2,8 @@
 #include "Game.h"
 #include "Drawable.hpp"
 #include "palette.h"
+#include "T_Rex.hpp"
+#include "T_Rex_Step.hpp"
 
 #include <curses.h>
 
@@ -15,8 +17,8 @@ Game::Game(int y, int x) {
     _board->initBoard();
     _menu = new Menu();
     _isRunning = true;
-    _t_rex_move1 = new T_rex(BOARD_HEIGHT - 20, 10);
-    _t_rex_move2 = new T_rex(BOARD_HEIGHT - 20, 10);
+    _t_rex_move1 = new T_rex(_board->getGroundY() - 6, 10); // Plus height of T-rex. Refactor it to constant
+    _t_rex_move2 = new T_Rex_step(_board->getGroundY() - 6, 10);
 
 }
 
@@ -62,18 +64,23 @@ void Game::updateState() {
         _board->add(_bonus);
 
     }
-
+//    _board->ClearObject(_t_rex_move1);
+//    _board->add(_t_rex_move1);
+//    _t_rex_move1->jump();
+//
+//    _t_rex_move1->move();
 
     if (_is_step) {
+        _board->ClearObject(_t_rex_move1);
         _board->add(_t_rex_move2);
 
 
     } else {
+        _board->ClearObject(_t_rex_move2);
         _board->add(_t_rex_move1);
 
     }
     _is_step = !_is_step;
-
 
 }
 

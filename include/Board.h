@@ -14,7 +14,11 @@ public:
 
     void initBoard();
 
+    void ClearObject(Drawable *drawable);
+
     void setBorder();
+
+    [[nodiscard]] int getGroundY() const;
 
     void drawRoadLine();
 
@@ -34,6 +38,7 @@ private:
     WINDOW *boardWin;
     int _height;
     int _width;
+    int _ground;
 
 };
 
