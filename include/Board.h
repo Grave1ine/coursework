@@ -22,7 +22,7 @@ public:
 
     void drawRoadLine();
 
-    void add( Drawable * drawable);
+    void add(Drawable *drawable);
 
     void printBoard() const;
 

@@ -43,6 +43,16 @@ Game::~Game() {
 void Game::processInput() {
 
     chtype userInput = _board->getInput();
+    switch (userInput) {
+        case 'q':
+            _isRunning = false;
+            break;
+        case ' ':
+            _t_rex_move1->jump();
+            break;
+        default:
+            break;
+    }
 
 }
 
@@ -64,25 +74,30 @@ void Game::updateState() {
         _board->add(_bonus);
 
     }
-//    _board->ClearObject(_t_rex_move1);
-//    _board->add(_t_rex_move1);
-//    _t_rex_move1->jump();
-//
-//    _t_rex_move1->move();
 
-    if (_is_step) {
+    if (_t_rex_move1->isJump()) {
+        beep();
         _board->ClearObject(_t_rex_move1);
-        _board->add(_t_rex_move2);
-
-
-    } else {
-        _board->ClearObject(_t_rex_move2);
+        beep();
+        _t_rex_move1->move();
+        beep();
         _board->add(_t_rex_move1);
+        beep();
+    } else {
+        if (_is_step) {
+            _board->ClearObject(_t_rex_move1);
+            _board->add(_t_rex_move2);
 
+
+        } else {
+            _board->ClearObject(_t_rex_move2);
+            _board->add(_t_rex_move1);
+
+        }
+        _is_step = !_is_step;
     }
-    _is_step = !_is_step;
-
 }
+
 
 void Game::run() {
 

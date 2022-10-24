@@ -15,7 +15,10 @@ public:
 
     void move();
 
+    [[nodiscard]] bool isJump() const;
+
 private:
+    int _floor_level;
     int _speed;
     bool _isJumping;
 };
