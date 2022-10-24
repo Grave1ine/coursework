@@ -39,7 +39,7 @@ private:
     T_rex *_t_rex_move1;
     T_Rex_step *_t_rex_move2;
 
-    bool _is_step = false;
+    bool _is_step = false; // true - step, false - run
 
     bool _isRunning;
 
