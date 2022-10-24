@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.23)
-project(Sega)
+project(t_rex)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -14,34 +14,46 @@ else ()
     include_directories(${CURSES_INCLUDE_DIR})
 endif ()
 
-include_directories(.)
+include_directories(include)
 
+
+############################################################
+#Generate the static library from the library sources
+############################################################
+
+add_library(t_rex_lib STATIC
+            src/Game.cpp
+            src/Menu.cpp
+            src/Palette.cpp
+            src/Screen.cpp
+            src/Board.cpp
+            src/Drawable.cpp
+            src/Bonus.cpp
+            src/Drawable_Str.cpp
+            src/Drawable_Rect.cpp
+            src/T_Rex.cpp
+            src/T_Rex_Step.cpp
+            )
+
+target_include_directories(t_rex_lib
+                           PUBLIC
+                           ${PROJECT_SOURCE_DIR}/include
+                           )
+
+target_link_libraries(t_rex_lib
+                      PUBLIC
+                      ${CURSES_LIBRARIES}
+                      )
 
 ############################################################
 # Create an executable
 ############################################################
 
-add_executable(Sega main.cpp
-               Game.cpp
-               Menu.cpp
-               Palette.cpp
-               Pearson.cpp
-               Screen.cpp
-               Board.cpp
-               Board.h
-               Game.h
-               Control.h
-               GameState.h
-               Menu.h
-               palette.h
-               Pearson.h
-               Screen.h
-               )
+add_executable(t_rex App/main.cpp)
 
-
-target_link_libraries(Sega
-                      PUBLIC
-                      ${CURSES_LIBRARIES}
+target_link_libraries(t_rex
+                      PRIVATE
+                      t_rex_lib
                       )
 
 

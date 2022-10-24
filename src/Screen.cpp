@@ -6,16 +6,15 @@
 void screen() // Rename to something like "InitScreen
 {
 
-    initscr();                         //включение графической библиотеки
-    keypad(stdscr, TRUE);              //обработка командных клавиш (стрелки)
-    curs_set(0);                       //убирает мигающий курсор в консоли
-    InitPalette();
-    noecho();
+//    initscr();                         //включение графической библиотеки
+//    keypad(stdscr, TRUE);              //обработка командных клавиш (стрелки)
+//    curs_set(0);                       //убирает мигающий курсор в консоли
+//    InitPalette();
+//    noecho();
 
-//FIXME: Wrong logic. You've  already  used mvprintw!
-    //заполнение поля?
-    attron(COLOR_PAIR(Screen_palett)); //TODO: Separate all colors to the separate file
-    chtype ch = ' ' | COLOR_PAIR(Screen_palett);        //функционал из библиотеки
+
+    attron(COLOR_PAIR(LOGO)); //TODO: Separate all colors to the separate file
+    chtype ch = ' ' | COLOR_PAIR(LOGO);        //функционал из библиотеки
     addch(ch);                                          //заполнение поля (функционал из библиотеки)
     mvprintw(7, 2,
              "     ..-:***************.    ...:****************:     ..:****************..       ..:*:--:*-.             ");
@@ -53,8 +52,11 @@ void screen() // Rename to something like "InitScreen
 
     attron(COLOR_PAIR(TEXT));
     mvprintw(28, 92, "press any key");
+    attrset(A_NORMAL);
 
     getch();
+    clear();
+    refresh();
 
 }
 
