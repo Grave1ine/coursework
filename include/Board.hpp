@@ -18,7 +18,7 @@ public:
 
     void setBorder();
 
-    void setTimeOut(int );
+    void setTimeOut(int);
 
     [[nodiscard]] int getGroundY() const;
 
@@ -33,8 +33,6 @@ public:
     void clearBoard();
 
     [[nodiscard]] chtype getInput() const;
-
-
 
 
 private:

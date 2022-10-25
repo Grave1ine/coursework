@@ -20,7 +20,7 @@ void T_rex::jump() {
 }
 
 
-void T_rex::move() {
+bool T_rex::move() {
 
     _y -= _speed;
     if (_y > (_floor_level - 1)) {
@@ -28,11 +28,11 @@ void T_rex::move() {
         _isJumping = false;
     }
 
-    if (_y < 10) {
+    if (_y < 5) {
         _speed = _speed * -1;
     }
 
-
+    return _isJumping;
 }
 
 bool T_rex::isJump() const {

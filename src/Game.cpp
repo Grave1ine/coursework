@@ -48,7 +48,12 @@ void Game::processInput() {
             _isRunning = false;
             break;
         case ' ':
-            _t_rex_move1->jump();
+            if (!_t_rex_move1->isJump()) {
+                beep();
+                _board->setTimeOut(50);
+                _t_rex_move1->jump();
+            }
+
             break;
         default:
             break;
@@ -76,13 +81,14 @@ void Game::updateState() {
     }
 
     if (_t_rex_move1->isJump()) {
-        beep();
+
         _board->ClearObject(_t_rex_move1);
-        beep();
-        _t_rex_move1->move();
-        beep();
+        bool move_result = _t_rex_move1->move();
         _board->add(_t_rex_move1);
-        beep();
+        if (!move_result) {
+            _board->setTimeOut(300);
+        }
+
     } else {
         if (_is_step) {
             _board->ClearObject(_t_rex_move1);

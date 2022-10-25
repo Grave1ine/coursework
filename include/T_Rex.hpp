@@ -13,7 +13,7 @@ public:
 
     void jump();
 
-    void move();
+    bool move();
 
     [[nodiscard]] bool isJump() const;
 

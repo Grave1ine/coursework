@@ -15,7 +15,7 @@ GameBoard::GameBoard(int height, int width) : _height(height), _width(width) {
 
     boardWin = newwin(height, width, yMax / 2 - height / 2, xMax / 2 - width / 2);
     _ground = height - 4;
-
+    setTimeOut(300);
 }
 
 void GameBoard::initBoard() {
@@ -46,8 +46,6 @@ void GameBoard::clearBoard() {
 }
 
 chtype GameBoard::getInput() const {
-
-    beep();
 
     return wgetch(boardWin);
 
