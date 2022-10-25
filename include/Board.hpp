@@ -33,6 +33,8 @@ public:
     [[nodiscard]] chtype getInput() const;
 
 
+
+
 private:
 
     WINDOW *boardWin;

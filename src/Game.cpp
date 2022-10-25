@@ -1,7 +1,7 @@
 #include "Bonus.hpp"
-#include "Game.h"
+#include "Game.hpp"
 #include "Drawable.hpp"
-#include "palette.h"
+#include "palette.hpp"
 #include "T_Rex.hpp"
 #include "T_Rex_Step.hpp"
 

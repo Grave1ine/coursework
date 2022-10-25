@@ -1,5 +1,5 @@
-#include "palette.h"
-#include "Board.h"
+#include "palette.hpp"
+#include "Board.hpp"
 
 #include <curses.h>
 

@@ -1,4 +1,4 @@
-#include "palette.h"
+#include "palette.hpp"
 #include <curses.h>
 
 void InitPalette()

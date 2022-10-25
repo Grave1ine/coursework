@@ -1,5 +1,5 @@
-#include "Screen.h"
-#include "palette.h"
+#include "Screen.hpp"
+#include "palette.hpp"
 
 #include <curses.h>
 

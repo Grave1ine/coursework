@@ -2,9 +2,8 @@
 #define GAME_H
 
 #include "Bonus.hpp"
-#include "Board.h"
-#include "GameState.h"
-#include "Menu.h"
+#include "Board.hpp"
+#include "Menu.hpp"
 #include "T_Rex.hpp"
 #include "T_Rex_Step.hpp"
 
