@@ -18,6 +18,8 @@ public:
 
     void setBorder();
 
+    void setTimeOut(int );
+
     [[nodiscard]] int getGroundY() const;
 
     void drawRoadLine();

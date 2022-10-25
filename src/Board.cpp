@@ -76,5 +76,11 @@ int GameBoard::getGroundY() const {
 
 }
 
+void GameBoard::setTimeOut(int time_out) {
+
+    wtimeout(boardWin, time_out);
+
+}
+
 
 
