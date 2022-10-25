@@ -18,11 +18,13 @@ public:
 
     void setBorder();
 
+    void setTimeOut(int);
+
     [[nodiscard]] int getGroundY() const;
 
     void drawRoadLine();
 
-    void add( Drawable * drawable);
+    void add(Drawable *drawable);
 
     void printBoard() const;
 

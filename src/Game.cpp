@@ -1,7 +1,7 @@
 #include "Bonus.hpp"
-#include "Game.h"
+#include "Game.hpp"
 #include "Drawable.hpp"
-#include "palette.h"
+#include "palette.hpp"
 #include "T_Rex.hpp"
 #include "T_Rex_Step.hpp"
 
@@ -43,6 +43,21 @@ Game::~Game() {
 void Game::processInput() {
 
     chtype userInput = _board->getInput();
+    switch (userInput) {
+        case 'q':
+            _isRunning = false;
+            break;
+        case ' ':
+            if (!_t_rex_move1->isJump()) {
+                beep();
+                _board->setTimeOut(50);
+                _t_rex_move1->jump();
+            }
+
+            break;
+        default:
+            break;
+    }
 
 }
 
@@ -64,25 +79,31 @@ void Game::updateState() {
         _board->add(_bonus);
 
     }
-//    _board->ClearObject(_t_rex_move1);
-//    _board->add(_t_rex_move1);
-//    _t_rex_move1->jump();
-//
-//    _t_rex_move1->move();
 
-    if (_is_step) {
+    if (_t_rex_move1->isJump()) {
+
         _board->ClearObject(_t_rex_move1);
-        _board->add(_t_rex_move2);
-
+        bool move_result = _t_rex_move1->move();
+        _board->add(_t_rex_move1);
+        if (!move_result) {
+            _board->setTimeOut(300);
+        }
 
     } else {
-        _board->ClearObject(_t_rex_move2);
-        _board->add(_t_rex_move1);
+        if (_is_step) {
+            _board->ClearObject(_t_rex_move1);
+            _board->add(_t_rex_move2);
 
+
+        } else {
+            _board->ClearObject(_t_rex_move2);
+            _board->add(_t_rex_move1);
+
+        }
+        _is_step = !_is_step;
     }
-    _is_step = !_is_step;
-
 }
+
 
 void Game::run() {
 

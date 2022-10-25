@@ -8,6 +8,7 @@ T_rex::T_rex(int y, int x) : DrawableRect(y, x, "../textures/trx_move1.trx") {
 
     _speed = 0;
     _isJumping = false;
+    _floor_level = y;
 }
 
 void T_rex::jump() {
@@ -19,27 +20,23 @@ void T_rex::jump() {
 }
 
 
-void T_rex::move() {
+bool T_rex::move() {
 
-    int jump_height = 1;
-
-    int startY = getY();
-
-
-
-    if (_isJumping) {
-      if ( _y <= jump_height) {
-        _speed = -1;
-    } else if (_y >= startY) {
+    _y -= _speed;
+    if (_y > (_floor_level - 1)) {
         _speed = 0;
         _isJumping = false;
-
-    }else {
-        _y -= _speed;
-    }
     }
 
+    if (_y < 5) {
+        _speed = _speed * -1;
+    }
 
+    return _isJumping;
+}
 
+bool T_rex::isJump() const {
+
+    return _isJumping;
 }
 
