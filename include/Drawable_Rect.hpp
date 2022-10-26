@@ -7,7 +7,7 @@
 
 #include "Drawable.hpp"
 
-#include <ncurses.h>
+#include <curses.h>
 #include <tuple>
 #include <vector>
 
