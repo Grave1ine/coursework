@@ -7,7 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
 find_package(Curses REQUIRED)
 
-if (CURSES_NOT_FOUND)
+if (NOT CURSES_FOUND)
     message(FATAL_ERROR "Curses not found")
 else ()
     message(STATUS "Curses found")
@@ -33,6 +33,7 @@ add_library(t_rex_lib STATIC
             src/Drawable_Rect.cpp
             src/T_Rex.cpp
             src/T_Rex_Step.cpp
+
             )
 
 target_include_directories(t_rex_lib

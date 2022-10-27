@@ -29,7 +29,9 @@ public:
 
     void run();
 
-    [[nodiscard]] bool isRunning() const;
+    void ProcessMenu();
+
+      [[nodiscard]] bool isRunning() const;
 
 private:
     GameBoard *_board;
@@ -37,6 +39,7 @@ private:
     Bonus *_bonus{};
     T_rex *_t_rex_move1;
     T_Rex_step *_t_rex_move2;
+
 
     bool _is_step = false; // true - step, false - run
 

@@ -34,6 +34,8 @@ public:
 
     [[nodiscard]] chtype getInput() const;
 
+    [[nodiscard]] WINDOW *getBoard() const;
+
 
 private:
 

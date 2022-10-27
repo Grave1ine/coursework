@@ -80,5 +80,11 @@ void GameBoard::setTimeOut(int time_out) {
 
 }
 
+WINDOW *GameBoard::getBoard() const {
+
+    return boardWin;
+
+}
+
 
 
