@@ -5,18 +5,22 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-find_package(Curses REQUIRED)
+if (NOT WIN32)
+    find_package(Curses REQUIRED)
 
-if (NOT CURSES_FOUND)
-    message(FATAL_ERROR "Curses not found")
-else ()
-    message(STATUS "Curses found")
-    include_directories(${CURSES_INCLUDE_DIR})
+    if (NOT CURSES_FOUND)
+        message(FATAL_ERROR "Curses not found")
+    else ()
+        message(STATUS "Curses found")
+        include_directories(${CURSES_INCLUDE_DIR})
+    endif ()
 endif ()
 
 include_directories(include)
 
-include_directories(C:\\C++\\work_2022_1\\PDCurses)
+if (WIN32)
+    include_directories(C:\\C++\\work_2022_1\\PDCurses)
+endif ()
 
 ############################################################
 #Generate the static library from the library sources
@@ -43,10 +47,11 @@ target_include_directories(t_rex_lib
                            ${PROJECT_SOURCE_DIR}/include
                            )
 
-target_link_libraries(t_rex_lib
-        PUBLIC
-        #                      ${CURSES_LIBRARIES}
-        C:\\C++\\work_2022_1\\PDCurses\\wincon\\pdcurses.a)
+if (WIN32)
+    target_link_libraries(t_rex_lib PUBLIC C:\\C++\\work_2022_1\\PDCurses\\pdcurses.lib)
+else ()
+    target_link_libraries(t_rex_lib PUBLIC ${CURSES_LIBRARIES})
+endif ()
 
 ############################################################
 # Create an executable
