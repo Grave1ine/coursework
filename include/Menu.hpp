@@ -11,6 +11,8 @@ public:
 private:
     int yMax, xMax;
     WINDOW * _parentWindow;
+
+    static std::string _getItemFromString( const std::string&, int );
 };
 
 #endif // MENU_H

@@ -61,6 +61,7 @@ void Game::processInput() {
         case 'm':
             _board->setTimeOut(-1);
             ProcessMenu();
+            redraw();
             _board->setTimeOut(200);
             break;
 
