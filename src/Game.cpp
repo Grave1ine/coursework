@@ -22,7 +22,6 @@ Game::Game(int y, int x) {
     _t_rex_move1 = new T_rex(_board->getGroundY() - 6, 10); // Plus height of T-rex. Refactor it to constant
     _t_rex_move2 = new T_Rex_step(_board->getGroundY() - 6, 10);
 
-
 }
 
 

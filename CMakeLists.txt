@@ -33,6 +33,7 @@ add_library(t_rex_lib STATIC
             src/Drawable_Rect.cpp
             src/T_Rex.cpp
             src/T_Rex_Step.cpp
+            src/Cactus_1.cpp
 
             )
 
