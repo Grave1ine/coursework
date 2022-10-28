@@ -3,7 +3,7 @@
 
 #include "Drawable.hpp"
 
-#include <ncurses.h>
+#include <curses.h>
 
 
 class GameBoard                         //структура игрового пространства

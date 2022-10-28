@@ -16,6 +16,7 @@ endif ()
 
 include_directories(include)
 
+include_directories(C:\\C++\\work_2022_1\\PDCurses)
 
 ############################################################
 #Generate the static library from the library sources
@@ -43,9 +44,9 @@ target_include_directories(t_rex_lib
                            )
 
 target_link_libraries(t_rex_lib
-                      PUBLIC
-                      ${CURSES_LIBRARIES}
-                      )
+        PUBLIC
+        #                      ${CURSES_LIBRARIES}
+        C:\\C++\\work_2022_1\\PDCurses\\wincon\\pdcurses.a)
 
 ############################################################
 # Create an executable

@@ -7,7 +7,7 @@
 
 #include "Drawable.hpp"
 
-#include <ncurses.h>
+#include <curses.h>
 
 
 class DrawableStr : public Drawable {

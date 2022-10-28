@@ -5,7 +5,7 @@
 #ifndef COURSEWORK_MAIN_DEV_DRAWABLE_HPP
 #define COURSEWORK_MAIN_DEV_DRAWABLE_HPP
 
-#include <ncurses.h>
+#include <curses.h>
 #include <string>
 
 class Drawable {
