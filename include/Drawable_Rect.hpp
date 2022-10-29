@@ -21,9 +21,9 @@ public:
 
     void clear(WINDOW *) override;
 
-    int getHeight() const;
+    [[nodiscard]] int getHeight() const;
 
-    int getWidth() const;
+    [[nodiscard]] int getWidth() const;
 
 
 private:

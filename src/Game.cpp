@@ -4,6 +4,7 @@
 #include "palette.hpp"
 #include "T_Rex.hpp"
 #include "T_Rex_Step.hpp"
+#include <vector>
 
 #include <curses.h>
 
@@ -12,10 +13,11 @@ Game::Game(int y, int x) {
 
     noecho();
     curs_set(0);
+    cbreak();
 
     _board = new GameBoard(y, x);
     _board->initBoard();
-    _menu = new Menu();
+    _menu = new Menu(_board->getBoard());
     _isRunning = true;
     _t_rex_move1 = new T_rex(_board->getGroundY() - 6, 10); // Plus height of T-rex. Refactor it to constant
     _t_rex_move2 = new T_Rex_step(_board->getGroundY() - 6, 10);
@@ -55,6 +57,19 @@ void Game::processInput() {
             }
 
             break;
+        case 'm':
+            _board->setTimeOut(-1);
+            ProcessMenu();
+            redraw();
+            _board->setTimeOut(200);
+            break;
+
+        case 'p':
+            _board->setTimeOut(-1);
+            while (_board->getInput() != 'p');
+            _board->setTimeOut(200);
+            break;
+
         default:
             break;
     }
@@ -105,7 +120,7 @@ void Game::updateState() {
 }
 
 
-void Game::run() {
+void Game::run() { // Main LOOP
 
     while (isRunning()) {
 
@@ -116,6 +131,17 @@ void Game::run() {
         redraw();
 
     }
+
+}
+
+void Game::ProcessMenu() {
+
+    auto result = _menu->runGetChoice();
+    if (result.empty()) {
+        return;
+    }
+    beep();
+
 
 }
 
